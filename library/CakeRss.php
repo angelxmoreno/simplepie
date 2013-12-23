@@ -40,11 +40,23 @@ class CakeRss extends SimplePie {
 		} else {
 			$date = null;
 		}
-		if($date){
-			$date = date($date_format,  strtotime($date));
+		if ($date) {
+			$date = date($date_format, strtotime($date));
 		}
 
 		return $date;
+	}
+
+	/**
+	 * Get the favicon for the current feed
+	 *
+	 */
+	public function get_favicon() {
+		if (($url = $this->get_link()) !== null) {
+			return 'http://www.google.com/s2/favicons?domain=' . urlencode($url);
+		}
+
+		return false;
 	}
 
 }
